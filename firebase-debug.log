@@ -1,0 +1,37 @@
+[debug] [2018-05-25T19:36:35.513Z] ----------------------------------------------------------------------
+[debug] [2018-05-25T19:36:35.516Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\I331896\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase serve --only functions,hosting
+[debug] [2018-05-25T19:36:35.517Z] CLI Version:   3.15.2
+[debug] [2018-05-25T19:36:35.517Z] Platform:      win32
+[debug] [2018-05-25T19:36:35.517Z] Node Version:  v8.6.0
+[debug] [2018-05-25T19:36:35.520Z] Time:          Sat May 26 2018 01:06:35 GMT+0530 (India Standard Time)
+[debug] [2018-05-25T19:36:35.520Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-05-25T19:36:35.547Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-05-25T19:36:35.548Z] > authorizing via signed-in user
+[debug] [2018-05-25T19:36:35.555Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/recordandrun-abea2  
+ Sat May 26 2018 01:06:35 GMT+0530 (India Standard Time)
+[debug] [2018-05-25T19:36:37.052Z] <<< HTTP RESPONSE 200
+[debug] [2018-05-25T19:36:37.054Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/recordandrun-abea2/tokens  
+ Sat May 26 2018 01:06:37 GMT+0530 (India Standard Time)
+[debug] [2018-05-25T19:36:38.140Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from 'C:\Firebase\recordRun\recordRunLocalFirebase'...
+[info] 
+[info] i  functions: Preparing to emulate functions.
+[debug] [2018-05-25T19:36:39.082Z] >>> HTTP REQUEST GET https://appengine.googleapis.com/v1/apps/recordandrun-abea2  
+ Sat May 26 2018 01:06:39 GMT+0530 (India Standard Time)
+[debug] [2018-05-25T19:36:39.082Z] >>> HTTP REQUEST GET https://apikeys.googleapis.com/v1/projects/recordandrun-abea2/apiKeys  
+ Sat May 26 2018 01:06:39 GMT+0530 (India Standard Time)
+[debug] [2018-05-25T19:36:39.083Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/recordandrun-abea2  
+ Sat May 26 2018 01:06:39 GMT+0530 (India Standard Time)
+[debug] [2018-05-25T19:36:40.612Z] <<< HTTP RESPONSE 200
+[debug] [2018-05-25T19:36:40.613Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/684922040528/clients/_:getWebAppConfig  
+ Sat May 26 2018 01:06:40 GMT+0530 (India Standard Time)
+[debug] [2018-05-25T19:36:40.698Z] <<< HTTP RESPONSE 200
+[debug] [2018-05-25T19:36:40.765Z] <<< HTTP RESPONSE 200
+[debug] [2018-05-25T19:36:41.516Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: public
+[info] +  hosting: Local server: http://localhost:5000
+
+[info] +  functions: app: http://localhost:5001/recordandrun-abea2/us-central1/app
+[info] [hosting] Rewriting /getTestCase?testCaseName=Post to local function app
