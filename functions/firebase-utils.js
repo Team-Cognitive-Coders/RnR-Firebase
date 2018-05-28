@@ -25,15 +25,11 @@ const bucket = firebaseApp.storage().bucket();
 
 saveTestCase = (sTestName, oTestCase) => {
     return new Promise((resolve, reject) => {
-        bucket.file('convo/' + sTestName + '.json').save(oTestCase, function (error) {
-            if (!error){
-                console.log('Success');
+        bucket.file('convo/' + sTestName + '.json').save(oTestCase, (error) => {
+            if (!error)
                 resolve();
-            }
-            else{
-                console.log('Error : '+JSON.stringify(error));
+            else
                 reject();
-            }
         });
     });
 };

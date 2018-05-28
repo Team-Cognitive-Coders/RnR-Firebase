@@ -3,6 +3,7 @@ const express = require('express');
 const bodyParser = require("body-parser");
 const firebase_util = require("./firebase-utils"); 
 const fs = require('fs');
+const request = require('request');
 
 const cors = require('cors')({
     origin: true
@@ -14,29 +15,29 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 
-app.post('/saveTestCase', (request, response) => {
-    var payload = request.body;
+app.post('/saveTestCase', (req, response) => {
+    var payload = req.body;
     var fileName = payload.testCaseName;
     var chats = payload.chats;
-    firebase_util.saveTestCase(fileName, chats).then(function(){
-        console.log("Success");
-        response.status(200).send();
+    firebase_util.saveTestCase(fileName, chats).then( () => {
+        res.status(200).send();
     }).catch((error) => {
-        response.status(500).send(error);
+        res.status(500).send(error);
     });
 });
 
-app.get('/getTestCase', (request, response) => {
-    var fileName = request.query.testCaseName;
-    firebase_util.getTestCaseUrl(fileName).then(function(testUrl){
-        fs.readFile(testUrl, (error, data) => {
-            if(error)
-                response.status(500).send(error);
+app.get('/getTestCase', (req, res) => {
+    var fileName = req.query.testCaseName;
+    firebase_util.getTestCaseUrl(fileName).then( (testUrl) => {
+        console.log(testUrl);
+        request(testUrl, { json: true }, (err1, res1, body) => {
+            if(err1)
+                res.status(500).send(err1);
             else
-                response.status(200).send(data);
+                res.status(200).send(body);
         })
     }).catch((error) => {
-        response.status(500).send(error);
+        res.status(500).send(error);
     });
 })
 
