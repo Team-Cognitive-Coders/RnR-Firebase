@@ -1,4 +1,3 @@
-
 getBotDetailsPayload = () => {
     return {
         name : "",

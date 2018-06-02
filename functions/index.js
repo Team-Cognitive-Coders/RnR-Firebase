@@ -95,4 +95,35 @@ app.get('/sendMessage', (req, res) => {
     })
 });
 
+app.delete('/deleteTestCase', (req, res) => {
+    var payload = req.query;
+    var uid = payload.uid;
+    var botId = payload.botId;
+    var testCaseId = payload.testCaseId;
+    firebase_util.setUserRef(uid);
+    firebase_util.setBotRef(botId);
+    firebase_util.deleteTestCase(testCaseId).then(() => {
+        console.log("DELETE SUCCESS");
+        firebase_util.deleteTestCaseDetails(testCaseId).then(() => {
+            res.status(200).send();
+        }, () => {
+            res.status(500).send(error);
+        });
+    }, () => {
+        res.status(500).send(error);
+    });
+});
+
+app.delete('/deleteBot', (req, res) => {
+    var payload = req.query;
+    var uid = payload.uid;
+    var botId = payload.botId;
+    firebase_util.setUserRef(uid);
+    firebase_util.deleteBot(botId).then(() => {
+        res.status(200).send();
+    }, () => {
+        res.status(500).send(error);
+    });
+});
+
 exports.app = functions.https.onRequest(app);

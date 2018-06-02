@@ -26,6 +26,14 @@
       {
         "source": "/sendMessage",
         "function": "app"
+      },
+      {
+        "source": "/deleteTestCase",
+        "function": "app"
+      },
+      {
+        "source": "/deleteBot",
+        "function": "app"
       }
     ],
     "headers": [

@@ -92,5 +92,41 @@ getAllBots = () => {
     });
 }
 
-module.exports = { saveTestCase, getTestCaseUrl, saveBot, saveTestCaseDetails, setBotRef, 
-    setUserRef, setTestCaseRef, getAllBots };
+deleteBot = (botId) => {
+    return new Promise((resolve, reject) => {
+        setBotRef(botId);
+        botRef.remove().then(() => {
+            resolve();
+        }, () => {
+            reject();
+        });;
+    });
+}
+
+deleteTestCaseDetails = (testCaseId) => {
+    return new Promise((resolve, reject) => {
+        setTestCaseRef(testCaseId);
+        testCaseRef.remove().then(() => {
+            console.log("DEL")
+            resolve();
+        }, () => {
+            reject();
+        });
+    });
+}
+
+deleteTestCase = (sTestName) => {
+    return new Promise((resolve, reject) => {
+        bucket.file('convo/' + sTestName + '.json').delete().then( () => {
+            resolve();
+        }).catch( err => {
+            reject(err);
+        });
+    });
+}
+
+module.exports = {
+    saveTestCase, getTestCaseUrl, saveBot, saveTestCaseDetails, setBotRef,
+    setUserRef, setTestCaseRef, getAllBots, deleteBot, deleteTestCaseDetails, 
+    deleteTestCase
+};

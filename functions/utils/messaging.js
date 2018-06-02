@@ -1,4 +1,5 @@
 const apiai = require('apiai');
+
 const pl = require('./payload-util');
 
 sendMessage = (payload) => {
@@ -9,10 +10,10 @@ sendMessage = (payload) => {
     });
 };
 
-sendMessageDialogFlow = (payload, resolve, reject) => {
+sendMessageApiAi = (payload, resolve, reject) => {
     var token = payload.token;
     var query = payload.query;
-    var sessionId = payload.sessionId
+    var sessionId = payload.sessionId;
     var app = apiai(token);
 
     var request = app.textRequest(query, {
@@ -33,5 +34,48 @@ sendMessageDialogFlow = (payload, resolve, reject) => {
     request.end();
 };
 
-module.exports = {sendMessage};
+sendMessageDialogFlow = (payload, resolve, reject) => {
+    const projectId = payload.token
+    const sessionId = payload.sessionId
+    const query = payload.query;
+    const languageCode = 'en-US';
+
+    // Instantiate a DialogFlow client.
+    const dialogflow = require('dialogflow');
+    const sessionClient = new dialogflow.SessionsClient();
+
+    // Define session path
+    const sessionPath = sessionClient.sessionPath(projectId, sessionId);
+
+    // The text query request.
+    const request = {
+        session: sessionPath,
+        queryInput: {
+            text: {
+                text: query,
+                languageCode: languageCode,
+            },
+        },
+    };
+    // Send request and log result
+    sessionClient
+        .detectIntent(request)
+        .then(responses => {
+            console.log('Detected intent');
+            const result = responses[0].queryResult;
+            console.log(`  Query: ${result.queryText}`);
+            console.log(`  Response: ${result.fulfillmentText}`);
+            if (result.intent) {
+                console.log(`  Intent: ${result.intent.displayName}`);
+            } else {
+                console.log(`  No intent matched.`);
+            }
+            resolve(responses);
+        })
+        .catch(err => {
+            console.error('ERROR:', err);
+        });
+};
+
+module.exports = { sendMessage };
 
