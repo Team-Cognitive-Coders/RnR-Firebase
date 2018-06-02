@@ -1,0 +1,45 @@
+[debug] [2018-06-02T09:27:27.703Z] ----------------------------------------------------------------------
+[debug] [2018-06-02T09:27:27.708Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\I331896\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase serve --only functions,hosting
+[debug] [2018-06-02T09:27:27.709Z] CLI Version:   3.15.2
+[debug] [2018-06-02T09:27:27.709Z] Platform:      win32
+[debug] [2018-06-02T09:27:27.709Z] Node Version:  v8.6.0
+[debug] [2018-06-02T09:27:27.712Z] Time:          Sat Jun 02 2018 14:57:27 GMT+0530 (India Standard Time)
+[debug] [2018-06-02T09:27:27.712Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-06-02T09:27:27.734Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-06-02T09:27:27.735Z] > authorizing via signed-in user
+[debug] [2018-06-02T09:27:27.739Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/recordandrun-abea2  
+ Sat Jun 02 2018 14:57:27 GMT+0530 (India Standard Time)
+[debug] [2018-06-02T09:27:29.207Z] <<< HTTP RESPONSE 200
+[debug] [2018-06-02T09:27:29.209Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/recordandrun-abea2/tokens  
+ Sat Jun 02 2018 14:57:29 GMT+0530 (India Standard Time)
+[debug] [2018-06-02T09:27:30.997Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from 'C:\Firebase\recordRun\recordRunLocalFirebase'...
+[info] 
+[info] i  functions: Preparing to emulate functions.
+[debug] [2018-06-02T09:27:32.420Z] >>> HTTP REQUEST GET https://appengine.googleapis.com/v1/apps/recordandrun-abea2  
+ Sat Jun 02 2018 14:57:32 GMT+0530 (India Standard Time)
+[debug] [2018-06-02T09:27:32.421Z] >>> HTTP REQUEST GET https://apikeys.googleapis.com/v1/projects/recordandrun-abea2/apiKeys  
+ Sat Jun 02 2018 14:57:32 GMT+0530 (India Standard Time)
+[debug] [2018-06-02T09:27:32.421Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/recordandrun-abea2  
+ Sat Jun 02 2018 14:57:32 GMT+0530 (India Standard Time)
+[debug] [2018-06-02T09:27:34.194Z] <<< HTTP RESPONSE 200
+[debug] [2018-06-02T09:27:34.195Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/684922040528/clients/_:getWebAppConfig  
+ Sat Jun 02 2018 14:57:34 GMT+0530 (India Standard Time)
+[debug] [2018-06-02T09:27:34.320Z] <<< HTTP RESPONSE 200
+[debug] [2018-06-02T09:27:34.365Z] <<< HTTP RESPONSE 200
+[debug] [2018-06-02T09:27:35.471Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: public
+[info] +  hosting: Local server: http://localhost:5000
+
+[info] +  functions: app: http://localhost:5001/recordandrun-abea2/us-central1/app
+[info] [hosting] Rewriting /sendMessage?token=377422fb9dcb4abf98242fb14afa8311&query=what%20is%20your%20name&sessionId=123&type=DF to local function app
+[info] [hosting] Rewriting /sendMessage?token=377422fb9dcb4abf98242fb14afa8311&query=fuck%20you&sessionId=123&type=DF to local function app
+[info] [hosting] Rewriting /sendMessage?token=377422fb9dcb4abf98242fb14afa8311&query=fuckyou&sessionId=123&type=DF to local function app
+[info] [hosting] Rewriting /sendMessage?token=377422fb9dcb4abf98242fb14afa8311&query=fuckyou&sessionId=1235&type=DF to local function app
+[info] [hosting] Rewriting /sendMessage?token=377422fb9dcb4abf98242fb14afa8311&query=fuckyou&sessionId=123512&type=DF to local function app
+[info] [hosting] Rewriting /sendMessage?token=377422fb9dcb4abf98242fb14afa8311&query=hi&sessionId=123512&type=DF to local function app
+[info] [hosting] Rewriting /sendMessage?token=377422fb9dcb4abf98242fb14afa8311&query=fuckyou&sessionId=123512&type=DF to local function app
+[info] [hosting] Rewriting /sendMessage?token=377422fb9dcb4abf98242fb14afa8311&query=mumbai&sessionId=123512&type=DF to local function app
+[info] [hosting] Rewriting /sendMessage?token=377422fb9dcb4abf98242fb14afa8311&query=hifjdf&sessionId=123512&type=DF to local function app
