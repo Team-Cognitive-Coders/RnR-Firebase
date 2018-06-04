@@ -2,6 +2,10 @@ const apiai = require('apiai');
 
 const pl = require('./payload-util');
 
+runTestCase = (body) => {
+    
+};
+
 sendMessage = (payload) => {
     return new Promise((resolve, reject) => {
         if (payload.type = "DF") {
@@ -77,5 +81,5 @@ sendMessageDialogFlow = (payload, resolve, reject) => {
         });
 };
 
-module.exports = { sendMessage };
+module.exports = { sendMessage, runTestCase };
 

@@ -1,8 +1,6 @@
 const functions = require('firebase-functions');
 const express = require('express');
 const bodyParser = require("body-parser");
-const fs = require('fs');
-const request = require('request');
 
 const firebase_util = require("./utils/firebase-utils");
 const pl = require('./utils/payload-util');
@@ -28,10 +26,11 @@ app.post('/saveTestCase', (req, res) => {
     firebase_util.setBotRef(payload.botId);
     chats = JSON.stringify(chats);
     firebase_util.saveTestCase(testCaseId, chats).then(() => {
+        testCaseDetails.testCaseId = testCaseId;
         firebase_util.getTestCaseUrl(testCaseId).then((testCaseUrl) => {
             testCaseDetails.url = testCaseUrl;
             firebase_util.saveTestCaseDetails(testCaseDetails, testCaseId).then(() => {
-                res.status(200).send();
+                res.status(200).send(testCaseDetails);
             }).catch((error) => {
                 res.status(500).send(error);
             });
@@ -50,8 +49,9 @@ app.post('/saveBot', (req, res) => {
     botDetails.type = payload.type;
     botDetails.token = payload.token;
     firebase_util.setUserRef(payload.uid);
-    firebase_util.saveBot(botDetails).then(() => {
-        res.status(200).send();
+    firebase_util.saveBot(botDetails).then( botId => {
+        botDetails.botId = botId;
+        res.status(200).send(botDetails);
     }).catch((error) => {
         res.status(500).send(error);
     });
@@ -60,12 +60,11 @@ app.post('/saveBot', (req, res) => {
 app.get('/getTestCase', (req, res) => {
     var testCaseId = req.query.testCaseId;
     firebase_util.getTestCaseUrl(testCaseId).then((testUrl) => {
-        request(testUrl, { json: true }, (err1, res1, body) => {
-            if (err1)
-                res.status(500).send(err1);
-            else
-                res.status(200).send(body);
-        })
+        firebase_util.getTestCaseFromUrl(testUrl).then( body => {
+            res.status(200).send(body);
+        }, err => {
+            res.status(500).send(err);
+        });
     }).catch((error) => {
         res.status(500).send(error);
     });
@@ -103,7 +102,6 @@ app.delete('/deleteTestCase', (req, res) => {
     firebase_util.setUserRef(uid);
     firebase_util.setBotRef(botId);
     firebase_util.deleteTestCase(testCaseId).then(() => {
-        console.log("DELETE SUCCESS");
         firebase_util.deleteTestCaseDetails(testCaseId).then(() => {
             res.status(200).send();
         }, () => {
@@ -122,6 +120,30 @@ app.delete('/deleteBot', (req, res) => {
     firebase_util.deleteBot(botId).then(() => {
         res.status(200).send();
     }, () => {
+        res.status(500).send(error);
+    });
+});
+
+app.get('/runAllTest', (req, res) => {
+    var uid = req.query.uid;
+    var botId = req.query.botId;
+    firebase_util.setUserRef(uid);
+    res.status(200).send();
+});
+
+app.get('/runTest', (req, res) => {
+    var testCaseId = req.query.testCaseId;
+    firebase_util.getTestCaseUrl(testCaseId).then((testUrl) => {
+        firebase_util.getTestCaseFromUrl(testUrl).then( body => {
+            messaging.runTestCase(body).then( reply => {
+                res.status(200).send(reply);
+            }, err => {
+                res.status(500).send(err);
+            });
+        }, err => {
+            res.status(500).send(err);
+        });
+    }).catch((error) => {
         res.status(500).send(error);
     });
 });

@@ -1,5 +1,6 @@
 const firebase = require('firebase-admin');
 const functions = require('firebase-functions');
+const request = require('request');
 
 // const firebaseApp = firebase.initializeApp(
 //     functions.config().firebase
@@ -63,9 +64,9 @@ saveBot = (botDetails) => {
     setBotRef(botId);
     return new Promise((resolve, reject) => {
         botRef.child('botDetails').set(botDetails).then(() => {
-            resolve();
-        }, () => {
-            reject();
+            resolve(botId);
+        }, (err) => {
+            reject(err);
         });
     });
 }
@@ -107,7 +108,6 @@ deleteTestCaseDetails = (testCaseId) => {
     return new Promise((resolve, reject) => {
         setTestCaseRef(testCaseId);
         testCaseRef.remove().then(() => {
-            console.log("DEL")
             resolve();
         }, () => {
             reject();
@@ -125,8 +125,19 @@ deleteTestCase = (sTestName) => {
     });
 }
 
+getTestCaseFromUrl = url => {
+    return new Promise((resolve, reject) => {
+        request(url, { json: true }, (err, res, body) => {
+            if (err)
+                reject(err);
+            else
+                resolve(body);
+        })
+    });
+}
+
 module.exports = {
     saveTestCase, getTestCaseUrl, saveBot, saveTestCaseDetails, setBotRef,
     setUserRef, setTestCaseRef, getAllBots, deleteBot, deleteTestCaseDetails, 
-    deleteTestCase
+    deleteTestCase, getTestCaseFromUrl
 };
