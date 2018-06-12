@@ -1,135 +1,226 @@
 (function () {
 
-    var testCasePayload, client;
-    initializeTestCasePayload = function(){
-        testCasePayload = {
-            testCaseName : "",
-            chats : {}
-        }
-    }
-    setTestCaseName= function(testCaseName){
-        testCasePayload.testCaseName = testCaseName;
-    }
+    var client, payloadModel;
+    fetchAllBots();
+    payloadModel = initializeMainPayload();
 
-    setAccessToken = function(token){
-        client = new ApiAi.ApiAiClient({accessToken: token});
-    }
-
-    saveTestCase = function(){
+    function fetchAllBots() {
         $.ajax({
-            url : "/saveTestCase",
-            data : testCasePayload,
-            type : "POST",
-            dataType : "json",
-            success : function(response){
-                debugger;
+            url: "/getBots",
+            data: { uid: 'U1234' },
+            type: "GET",
+            dataType: "json",
+            success: function (response) {
+                formatAllBots(response);
+                addAllBots();
             },
-            error : function(response){
+            error: function (response) {
 
             }
         });
     }
-    readTestCase = function(testCaseName){
-        testCasePayload.testCaseName = testCaseName;
+
+    addAllBots = function () {
+        var tHtml = Handlebars.templates.botlist(payloadModel);
+        $('#allBots').html(tHtml);
+        var t1Html = Handlebars.templates.headerbuttons(payloadModel);
+        $('#headerButtons').html(t1Html);
+        var t2Html = Handlebars.templates.input(payloadModel);
+        $('#input').html(t2Html);
+    };
+
+    setActiveBot = function (botId, no) {
+        jQuery.each(payloadModel.bots, function (index, obj) {
+            if (obj.botId == botId) {
+                obj.active = true;
+                payloadModel.botName = obj.name;
+                payloadModel.botId = obj.botId
+                setAccessToken(obj.token);
+            }
+            else {
+                obj.active = false;
+            }
+        });
+        addAllBots();
+    }
+
+    setActiveTestCase = function (testCaseId, botId) {
+        jQuery.each(payloadModel.bots, function (index, obj) {
+            if (obj.botId == botId) {
+                jQuery.each(obj.testCases, function (index, obj1) {
+                    obj1.active = obj1.testCaseId == testCaseId ? true : false;
+                });
+            }
+        });
+    }
+
+    setTestCaseName = function (testCaseName) {
+        payloadModel.testCasePayload.testCaseName = testCaseName;
+    }
+
+    setAccessToken = function (token) {
+        client = new ApiAi.ApiAiClient({ accessToken: token });
+    }
+
+    saveTestCase = function () {
         $.ajax({
-            url : "/readTestCase",
-            data : testCasePayload,
-            type : "GET",
-            dataType : "json",
-            success : function(response){
-                if(response){
-                    testCasePayload.chats = response;
+            url: "/saveTestCase",
+            data: payloadModel.testCasePayload,
+            type: "POST",
+            dataType: "json",
+            success: function (response) {
+                debugger;
+            },
+            error: function (response) {
+
+            }
+        });
+    }
+    readTestCase = function (testCaseName) {
+        payloadModel.testCasePayload.testCaseName = testCaseName;
+        $.ajax({
+            url: "/readTestCase",
+            data: payloadModel.testCasePayload,
+            type: "GET",
+            dataType: "json",
+            success: function (response) {
+                if (response) {
+                    payloadModel.testCasePayload.chats = response;
                     reRunTestCase();
                 }
             },
-            error : function(response){
+            error: function (response) {
 
             }
         });
     }
 
-    initializeTestCasePayload();
     //setAccessToken("377422fb9dcb4abf98242fb14afa8311");
-    $(".messages").animate({ scrollTop: $(document).height() }, "fast");
 
-    function newMessage() {
-        message = $(".message-input input").val();
-        if ($.trim(message) == '') {
-            return false;
-        }
-        addUserMessageToUI(message);
-        addUserMessageToPayload(message);
-        sendUserMessage(message);
-    };
-    function sendUserMessage(message){
-        client.textRequest(message).then(function(response){
+    sendUserMessage = function(message) {
+        client.textRequest(message).then(function (response) {
             var result;
             try {
                 result = response.result.fulfillment.speech
-            } catch(error) {
+            } catch (error) {
                 result = "";
             }
             addBotMessageToUI(result);
             addBotMessageToPayload(result);
-        }).catch(function(){
+        }).catch(function () {
 
         });
     }
-    $('.submit').click(function () {
-        newMessage();
-    });
 
+    formatAllBots = function (response) {
+        jQuery.each(response, function (index, obj) {
+            var botPayload = getAllBotsFormattedPayload();
+            botPayload.name = obj.botDetails.name;
+            botPayload.token = obj.botDetails.token;
+            botPayload.type = obj.botDetails.type;
+            botPayload.botId = index;
+            jQuery.each(obj.testCase, function (index2, obj2) {
+                var testCasePayload = getTestCaseFormattedPayload();
+                testCasePayload.name = obj2.name;
+                testCasePayload.testCaseId = obj2.testCaseId;
+                testCasePayload.url = obj2.url;
+                botPayload.testCases.push(testCasePayload);
+            });
+            payloadModel.bots.push(botPayload);
+        });
+    }
+    addBotToPayload = function (payload) {
+        payloadModel.bots.push(payload);
+    }
 
-    $(window).on('keydown', function (e) {
-        if (e.which == 13) {
-            newMessage();
-            return false;
-        }
-    });
-    function addUserMessageToPayload(message){
-        testCasePayload.chats[new Date().getTime()+"_USER"] = message;
+    addUserMessageToPayload = function(message) {
+        payloadModel.testCasePayload.chats[new Date().getTime() + "_USER"] = message;
     }
-    function addBotMessageToPayload(message){
-        testCasePayload.chats[new Date().getTime()+"_BOT"] = message;
+    addBotMessageToPayload = function(message) {
+        payloadModel.testCasePayload.chats[new Date().getTime() + "_BOT"] = message;
     }
-    function addUserMessageToUI(message){
-        $('<li class="replies"><img src="./images/profile.jpg" alt="" /><p>' + message + '</p></li>').appendTo($('.messages ul'));
-        $('.message-input input').val(null);
-        $('.contact.active .preview').html('<span>You: </span>' + message);
-        $(".messages").animate({ scrollTop: $(document).height() }, "fast");
-    };
-    function addBotMessageToUI(message){
-        $('<li class="sent"><img src="./images/bot.png" alt="" /><p>' + message + '</p></li>').appendTo($('.messages ul'));
-        $('.message-input input').val(null);
-        $('.contact.active .preview').html('<span>'+ $('#botNameId').val() + ':</span>' + message);
-        $(".messages").animate({ scrollTop: $(document).height() }, "fast");
-    };
+
     //======ReRun Test Case========Need to be modified
-    function reRunTestCase(){
-        var tempTestCasePayload = jQuery.extend({}, testCasePayload).chats;
+    function reRunTestCase() {
+        var tempTestCasePayload = jQuery.extend({}, payloadModel.testCasePayload).chats;
         sendMessageTemp(tempTestCasePayload, Object.keys(tempTestCasePayload)[0]);
     }
-    function sendMessageTemp(payload, key){
+
+    onSelectBot = function (botId) {
+        payloadModel.botId = botId;
+        payloadModel.mode = "BOT";
+        clearMessagesFromUI()
+        clearTestCasePayload();
+        setActiveBot(botId);
+    }
+
+    onSelectTestCase = function (testCaseId, botId, url) {
+        payloadModel.testCasePayload.testCaseId = testCaseId;
+        payloadModel.mode = "TESTCASE";
+        clearMessagesFromUI();
+        clearTestCasePayload();
+        setActiveTestCase(testCaseId, botId);
+        setActiveBot(botId);
+        fetchTestCase(testCaseId);
+    }
+
+    onAddTestCaseSelect = function(){
+        payloadModel.mode = "SAVE";
+        addAllBots();
+    }
+    
+    clearTestCasePayload = function(){
+        payloadModel.testCasePayload.testCaseName = "";
+        payloadModel.testCasePayload.testCaseId = "";
+        payloadModel.testCasePayload.chats = {};
+    }
+    fetchTestCase = function (testCaseId1) {
+        $.ajax({
+            url: "/getTestCase",
+            type: "GET",
+            data: { testCaseId: testCaseId1 },
+            dataType: "json",
+            success: function (response) {
+                if (response) {
+                    populateTestCases(response);
+                }
+            },
+            error: function (response) {
+
+            }
+        });
+    }
+
+    populateTestCases = function (result) {
+        jQuery.each(result, function (index, obj) {
+            if (index.indexOf("BOT") > -1)
+                addBotMessageToUI(obj);
+            else
+                addUserMessageToUI(obj);
+        });
+    }
+
+    function sendMessageTemp(payload, key) {
         addUserMessageToUI(payload[key]);
-        client.textRequest(payload[key]).then(function(response){
+        client.textRequest(payload[key]).then(function (response) {
             var result;
             try {
                 result = response.result.fulfillment.speech
-            } catch(error) {
+            } catch (error) {
                 result = "";
             }
             addBotMessageToUI(result);
-            if(payload[Object.keys(payload)[0]] != result){
-                alert("Error: Expected - "+payload[Object.keys(payload)[0]]);
+            if (payload[Object.keys(payload)[0]] != result) {
+                alert("Error: Expected - " + payload[Object.keys(payload)[0]]);
             }
-            else{
+            else {
                 delete payload[Object.keys(payload)[0]];
-                if(payload[Object.keys(payload)[0]])
+                if (payload[Object.keys(payload)[0]])
                     sendMessageTemp(payload, Object.keys(payload)[0]);
                 else
                     alert("Success");
             }
-        }).catch(function(){
+        }).catch(function () {
 
         });
         delete payload[key];

@@ -1,0 +1,31 @@
+<div class="botimage">
+    <img src="./images/bot.png" alt="" />
+</div>
+<p class="botName">{{botName}}</p>
+<div class="custom-buttons">
+    {{#ifCond mode "BOT"}}
+    <label for="add">
+        <i class="fa fa-plus fa-fw add" aria-hidden="true" onclick="onAddTestCaseSelect()"></i>
+    </label>
+    <label for="runAll">
+        <i class="fa fa-paper-plane fa-fw runAll" aria-hidden="true"></i>
+    </label>
+    {{/ifCond}}
+    {{#ifCond mode "TESTCASE"}}
+    <label for="run">
+        <i class="fa fa-play fa-fw run" aria-hidden="true"></i>
+    </label>
+    <label for="delete">
+        <i class="fa fa-trash fa-fw delete" aria-hidden="true"></i>
+    </label>
+    {{/ifCond}}
+    {{#ifCond mode "SAVE"}}
+    <label for="save">
+        <i class="fa fa-floppy-o fa-fw save" data-toggle="modal" data-target="#saveTcModal" aria-hidden="true"></i>
+    </label>
+    <label for="reset">
+        <i class="fa fa-undo fa-fw reset" aria-hidden="true"></i>
+    </label>
+    {{/ifCond}}
+
+</div>

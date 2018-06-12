@@ -1,46 +1,28 @@
 <!DOCTYPE html><html class=''>
 <head>
+<!-- Bootstrap CSS CDN -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet" href="./css/bootstrap.min.css">
-<script src="./js/jquery.min.js"></script>
-<script src="./js/bootstrap.min.js"></script>
-<script src="./js/ApiAi.min.js"></script>
+<!-- Scrollbar Custom CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+<script src="./js/vendor/jquery.min.js"></script>
+<script src="./js/vendor/bootstrap.min.js"></script>
+<script src="./js/vendor/ApiAi.min.js"></script>
 <link href='./css/styles.css' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700,300' rel='stylesheet' type='text/css'>
 <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css'>
 <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.2/css/font-awesome.min.css'>
 <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
 
-<style>
-.save-button {
-    background-color: #808080; /* Green */
-    border: none;
-		height: 50px;
-		width: 60px;
-    color: white;
-    padding: 0px 10px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 1px 2px;
-    cursor: pointer;
-    -webkit-transition-duration: 0.4s; /* Safari */
-    transition-duration: 0.4s;
-}
-
-
-.button2:hover {
-    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
-}
-</style>
 </head>
+
 <body>
 
 <div id="frame">
 	<div id="sidepanel">
 		<div id="profile">
 			<div class="wrap">
-				<img id="profile-img" src="./images/profile.jpg" class="online" alt="" />
+				<img id="profile-img" src="./images/zypnos_profile1.png" class="online" alt="" />
 				<p>Zypnos Labs</p>
 			</div>
 		</div>
@@ -49,45 +31,25 @@
 			<input type="text" placeholder="Search Bots..." />
 		</div>
 		<div id="contacts">
-			<ul class="testList">
-				<li class="contact active">
-					<div class="wrap">
-						<span class="contact-status online"></span>
-						<img src="./images/bot.png" alt="" />
-						<div class="meta">
-							<p class="name botName">Louis Litt</p>
-							<p class="preview"></p>
-						</div>
-					</div>
-				</li>
+			<ul class="botList" id="allBots">
+				<!-- Hanldebar template will go in here -->
 			</ul>
 		</div>
 		<div id="bottom-bar">
 			<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal"><i class="fa fa-user-plus fa-fw" aria-hidden="true"></i> <span>Add Bot</span></button>
-			<button id="settings"><i class="fa fa-cog fa-fw" aria-hidden="true"></i> <span>Settings</span></button>
 		</div>
 	</div>
 	<div class="content">
-		<div class="contact-profile">
-			<img src="./images/bot.png" alt="" />
-			<p class="botName">Harvey Specter</p>
-			<div class="custom-buttons">
-
-				<i><button class="fa save-button button2" data-toggle="modal" data-target="#saveModal" >Save</button></i>
-				<i><button class="fa save-button button2 reset" >Reset</button></i>
-				<i><button class="fa save-button button2 run" >Run</button></i>
-			</div>
+		<div class="contact-profile" id="headerButtons">
+			
 		</div>
 		<div class="messages">
 			<ul class="chats">
 
 			</ul>
 		</div>
-		<div class="message-input">
-			<div class="wrap">
-			<input type="text" placeholder="Write your message..." />
-			<button class="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
-			</div>
+		<div class="message-input" id="input">
+			
 		</div>
 	</div>
 </div>
@@ -104,11 +66,11 @@
 
                 </div>
                 <div class="modal-body">
-									<h5>Bot token</h5>
-								<input id="bottoken" type="text"></input>
-								<h5>Bot Name</h5>
-							<input id="botNameId" type="text"></input>
-								</div>
+					<h5>Bot token</h5>
+					<input id="bottoken" type="text"></input>
+					<h5>Bot Name</h5>
+					<input id="botName" type="text"></input>
+				</div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                     <button type="button" class="btn btn-primary" id="tokenSubmit" data-dismiss="modal">Save</button>
@@ -119,7 +81,7 @@
 </div>
 
 <!-- Modal for saving Testcase-->
-<div class="modal fade" id="saveModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="saveTcModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="vertical-alignment-helper">
         <div class="modal-dialog vertical-align-center">
             <div class="modal-content">
@@ -131,10 +93,9 @@
 
                 </div>
                 <div class="modal-body">
-									<h5>Test case Name</h5>
-								<input id="nameOfTestCase" type="text"></input>
-
-								</div>
+					<h5>Test case Name</h5>
+					<input id="nameOfTestCase" type="text"></input>
+				</div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                     <button type="button" class="btn btn-primary" id="testCaseSubmit" data-dismiss="modal">Save</button>
@@ -144,11 +105,14 @@
     </div>
 </div>
 
-
-
-
-<script src="./js/scripts.js"></script>
-<script src="./js/tokenscript.js"></script>
+<script type="text/javascript" src="./templates/handlebars.runtime.js"></script>
+<script type="text/javascript" src="./templates/handlebar-templates.js"></script>
+<script type="text/javascript" src="./js/tokenscript.js"></script>
+<script type="text/javascript" src="./js/utils/datarequest.js"></script>
+<script type="text/javascript" src="./js/utils/payload.js"></script>
+<script type="text/javascript" src="./js/utils/uiscript.js"></script>
+<script type="text/javascript" src="./js/utils/helpers.js"></script>
+<script type="text/javascript" src="./js/scripts.js"></script>
 
 </body>
 </html>
