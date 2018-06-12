@@ -1,13 +1,13 @@
 (function () {
 
     var client, payloadModel;
-    fetchAllBots();
     payloadModel = initializeMainPayload();
+    fetchAllBots();
 
     function fetchAllBots() {
         $.ajax({
             url: "/getBots",
-            data: { uid: 'U1234' },
+            data: { uid: payloadModel.uid },
             type: "GET",
             dataType: "json",
             success: function (response) {
@@ -48,7 +48,13 @@
         jQuery.each(payloadModel.bots, function (index, obj) {
             if (obj.botId == botId) {
                 jQuery.each(obj.testCases, function (index, obj1) {
-                    obj1.active = obj1.testCaseId == testCaseId ? true : false;
+                    if(obj1.testCaseId == testCaseId){
+                        obj1.active = true;
+                        payloadModel.testCasePayload.testCaseName = obj1.name;
+                    }
+                    else{
+                        obj1.active = false;
+                    }
                 });
             }
         });
@@ -63,31 +69,17 @@
     }
 
     saveTestCase = function () {
+        var payload = getSaveTestCasePayload();
+        payload.chats = payloadModel.testCasePayload.chats;
+        payload.testCaseName = payloadModel.testCasePayload.testCaseName,
+        payload.botId = payloadModel.botId,
         $.ajax({
             url: "/saveTestCase",
-            data: payloadModel.testCasePayload,
+            data: payload,
             type: "POST",
             dataType: "json",
             success: function (response) {
                 debugger;
-            },
-            error: function (response) {
-
-            }
-        });
-    }
-    readTestCase = function (testCaseName) {
-        payloadModel.testCasePayload.testCaseName = testCaseName;
-        $.ajax({
-            url: "/readTestCase",
-            data: payloadModel.testCasePayload,
-            type: "GET",
-            dataType: "json",
-            success: function (response) {
-                if (response) {
-                    payloadModel.testCasePayload.chats = response;
-                    reRunTestCase();
-                }
             },
             error: function (response) {
 
@@ -141,7 +133,8 @@
     }
 
     //======ReRun Test Case========Need to be modified
-    function reRunTestCase() {
+    reRunTestCase = function() {
+        clearMessagesFromUI();
         var tempTestCasePayload = jQuery.extend({}, payloadModel.testCasePayload).chats;
         sendMessageTemp(tempTestCasePayload, Object.keys(tempTestCasePayload)[0]);
     }
@@ -193,10 +186,14 @@
 
     populateTestCases = function (result) {
         jQuery.each(result, function (index, obj) {
-            if (index.indexOf("BOT") > -1)
+            if (index.indexOf("BOT") > -1){
                 addBotMessageToUI(obj);
-            else
+                addBotMessageToPayload(obj);
+            }
+            else{
                 addUserMessageToUI(obj);
+                addUserMessageToPayload(obj);
+            }
         });
     }
 

@@ -19,6 +19,15 @@
         }
     };
 
+    getSaveTestCasePayload = function () {
+        return payload = {
+            chats: {},
+            testCaseName: "",
+            botId: "",
+            uid: "U1234",
+        }
+    };
+
     getTestCaseFormattedPayload = function () {
         return payload = {
             name: "",

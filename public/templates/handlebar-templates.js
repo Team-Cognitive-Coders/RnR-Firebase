@@ -34,7 +34,7 @@ templates['botlist'] = template({"1":function(container,depth0,helpers,partials,
 templates['headerbuttons'] = template({"1":function(container,depth0,helpers,partials,data) {
     return "    <label for=\"add\">\r\n        <i class=\"fa fa-plus fa-fw add\" aria-hidden=\"true\" onclick=\"onAddTestCaseSelect()\"></i>\r\n    </label>\r\n    <label for=\"runAll\">\r\n        <i class=\"fa fa-paper-plane fa-fw runAll\" aria-hidden=\"true\"></i>\r\n    </label>\r\n";
 },"3":function(container,depth0,helpers,partials,data) {
-    return "    <label for=\"run\">\r\n        <i class=\"fa fa-play fa-fw run\" aria-hidden=\"true\"></i>\r\n    </label>\r\n    <label for=\"delete\">\r\n        <i class=\"fa fa-trash fa-fw delete\" aria-hidden=\"true\"></i>\r\n    </label>\r\n";
+    return "    <label for=\"run\">\r\n        <i class=\"fa fa-play fa-fw run\" aria-hidden=\"true\" onclick=\"reRunTestCase()\"></i>\r\n    </label>\r\n    <label for=\"delete\">\r\n        <i class=\"fa fa-trash fa-fw delete\" aria-hidden=\"true\"></i>\r\n    </label>\r\n";
 },"5":function(container,depth0,helpers,partials,data) {
     return "    <label for=\"save\">\r\n        <i class=\"fa fa-floppy-o fa-fw save\" data-toggle=\"modal\" data-target=\"#saveTcModal\" aria-hidden=\"true\"></i>\r\n    </label>\r\n    <label for=\"reset\">\r\n        <i class=\"fa fa-undo fa-fw reset\" aria-hidden=\"true\"></i>\r\n    </label>\r\n";
 },"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
