@@ -1,165 +1,42 @@
-[debug] [2018-06-11T10:33:14.692Z] ----------------------------------------------------------------------
-[debug] [2018-06-11T10:33:14.696Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\I331896\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase serve --only functions,hosting
-[debug] [2018-06-11T10:33:14.696Z] CLI Version:   3.15.2
-[debug] [2018-06-11T10:33:14.696Z] Platform:      win32
-[debug] [2018-06-11T10:33:14.696Z] Node Version:  v8.6.0
-[debug] [2018-06-11T10:33:14.700Z] Time:          Mon Jun 11 2018 16:03:14 GMT+0530 (India Standard Time)
-[debug] [2018-06-11T10:33:14.700Z] ----------------------------------------------------------------------
+[debug] [2018-06-13T07:50:25.097Z] ----------------------------------------------------------------------
+[debug] [2018-06-13T07:50:25.101Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\I331896\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase serve --only functions,hosting
+[debug] [2018-06-13T07:50:25.101Z] CLI Version:   3.15.2
+[debug] [2018-06-13T07:50:25.101Z] Platform:      win32
+[debug] [2018-06-13T07:50:25.101Z] Node Version:  v8.6.0
+[debug] [2018-06-13T07:50:25.105Z] Time:          Wed Jun 13 2018 13:20:25 GMT+0530 (India Standard Time)
+[debug] [2018-06-13T07:50:25.105Z] ----------------------------------------------------------------------
 [debug] 
-[debug] [2018-06-11T10:33:14.712Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2018-06-11T10:33:14.716Z] > authorizing via signed-in user
-[debug] [2018-06-11T10:33:14.716Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
-[debug] [2018-06-11T10:33:14.716Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token { refresh_token: '1/xG7HOdIzFva3mXwkg1kVGF8w9Vlm9_X1XX4AA6mOOmd_5-JM92EhXmOqGdxEI7J9',
-  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
-  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
-  grant_type: 'refresh_token',
-  scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
- Mon Jun 11 2018 16:03:14 GMT+0530 (India Standard Time)
-[debug] [2018-06-11T10:33:14.992Z] <<< HTTP RESPONSE 200
-[debug] [2018-06-11T10:33:15.008Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/recordandrun-abea2  
- Mon Jun 11 2018 16:03:15 GMT+0530 (India Standard Time)
-[debug] [2018-06-11T10:33:16.421Z] <<< HTTP RESPONSE 200
-[debug] [2018-06-11T10:33:16.422Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/recordandrun-abea2/tokens  
- Mon Jun 11 2018 16:03:16 GMT+0530 (India Standard Time)
-[debug] [2018-06-11T10:33:17.544Z] <<< HTTP RESPONSE 200
+[debug] [2018-06-13T07:50:25.121Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-06-13T07:50:25.121Z] > authorizing via signed-in user
+[debug] [2018-06-13T07:50:25.125Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/recordandrun-abea2  
+ Wed Jun 13 2018 13:20:25 GMT+0530 (India Standard Time)
+[debug] [2018-06-13T07:50:26.515Z] <<< HTTP RESPONSE 200
+[debug] [2018-06-13T07:50:26.515Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/recordandrun-abea2/tokens  
+ Wed Jun 13 2018 13:20:26 GMT+0530 (India Standard Time)
+[debug] [2018-06-13T07:50:27.515Z] <<< HTTP RESPONSE 200
 [info] 
 [info] === Serving from 'C:\Firebase\recordRun\recordRunLocalFirebase'...
 [info] 
 [info] i  functions: Preparing to emulate functions.
-[debug] [2018-06-11T10:33:18.283Z] >>> HTTP REQUEST GET https://appengine.googleapis.com/v1/apps/recordandrun-abea2  
- Mon Jun 11 2018 16:03:18 GMT+0530 (India Standard Time)
-[debug] [2018-06-11T10:33:18.283Z] >>> HTTP REQUEST GET https://apikeys.googleapis.com/v1/projects/recordandrun-abea2/apiKeys  
- Mon Jun 11 2018 16:03:18 GMT+0530 (India Standard Time)
-[debug] [2018-06-11T10:33:18.283Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/recordandrun-abea2  
- Mon Jun 11 2018 16:03:18 GMT+0530 (India Standard Time)
-[debug] [2018-06-11T10:33:20.065Z] <<< HTTP RESPONSE 200
-[debug] [2018-06-11T10:33:20.097Z] <<< HTTP RESPONSE 200
-[debug] [2018-06-11T10:33:20.097Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/684922040528/clients/_:getWebAppConfig  
- Mon Jun 11 2018 16:03:20 GMT+0530 (India Standard Time)
-[debug] [2018-06-11T10:33:20.101Z] <<< HTTP RESPONSE 200
-[debug] [2018-06-11T10:33:21.033Z] <<< HTTP RESPONSE 200
+[debug] [2018-06-13T07:50:28.223Z] >>> HTTP REQUEST GET https://appengine.googleapis.com/v1/apps/recordandrun-abea2  
+ Wed Jun 13 2018 13:20:28 GMT+0530 (India Standard Time)
+[debug] [2018-06-13T07:50:28.227Z] >>> HTTP REQUEST GET https://apikeys.googleapis.com/v1/projects/recordandrun-abea2/apiKeys  
+ Wed Jun 13 2018 13:20:28 GMT+0530 (India Standard Time)
+[debug] [2018-06-13T07:50:28.227Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/recordandrun-abea2  
+ Wed Jun 13 2018 13:20:28 GMT+0530 (India Standard Time)
+[debug] [2018-06-13T07:50:29.914Z] <<< HTTP RESPONSE 200
+[debug] [2018-06-13T07:50:29.914Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/684922040528/clients/_:getWebAppConfig  
+ Wed Jun 13 2018 13:20:29 GMT+0530 (India Standard Time)
+[debug] [2018-06-13T07:50:29.966Z] <<< HTTP RESPONSE 200
+[debug] [2018-06-13T07:50:30.002Z] <<< HTTP RESPONSE 200
+[debug] [2018-06-13T07:50:30.662Z] <<< HTTP RESPONSE 200
 [info] i  hosting: Serving hosting files from: public
 [info] +  hosting: Local server: http://localhost:5000
 
 [info] +  functions: app: http://localhost:5001/recordandrun-abea2/us-central1/app
-[info] [hosting] Rewriting /getBots to local function app
 [info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /saveBot to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /saveBot to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /saveBot to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /getTestCase?testCaseId=T_1527965303408 to local function app
-[info] [hosting] Rewriting /getTestCase?testCaseId=T_1527965303408 to local function app
-[info] [hosting] Rewriting /getTestCase?testCaseId=T_1527965268566 to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /getTestCase?testCaseId=T_1527965303408 to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /getTestCase?testCaseId=T_1527965303408 to local function app
-[info] [hosting] Rewriting /getTestCase?testCaseId=T_1527965268566 to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /getTestCase?testCaseId=T_1527965303408 to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /getTestCase?testCaseId=T_1527965303408 to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /getTestCase?testCaseId=T_1527965303408 to local function app
-[info] [hosting] Rewriting /getTestCase?testCaseId=T_1527965303408 to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /getTestCase?testCaseId=T_1527965303408 to local function app
-[info] [hosting] Rewriting /getTestCase?testCaseId=T_1527965268566 to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /getTestCase?testCaseId=T_1527965303408 to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /getTestCase?testCaseId=T_1527965303408 to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /getTestCase?testCaseId=T_1527965303408 to local function app
-[info] [hosting] Rewriting /getTestCase?testCaseId=T_1527965268566 to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /getTestCase?testCaseId=T_1527965303408 to local function app
-[info] [hosting] Rewriting /getTestCase?testCaseId=T_1527965303408 to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /getTestCase?testCaseId=T_1527965303408 to local function app
-[info] [hosting] Rewriting /getTestCase?testCaseId=T_1527965303408 to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /getTestCase?testCaseId=T_1527965303408 to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /getTestCase?testCaseId=T_1527965303408 to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /getTestCase?testCaseId=T_1527965303408 to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /getTestCase?testCaseId=T_1527965303408 to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /getTestCase?testCaseId=T_1527965303408 to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /getTestCase?testCaseId=T_1527965303408 to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /getTestCase?testCaseId=T_1527965268566 to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /getTestCase?testCaseId=T_1527965303408 to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /getTestCase?testCaseId=T_1527965303408 to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /getTestCase?testCaseId=T_1527965303408 to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /getTestCase?testCaseId=T_1527965303408 to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
+[info] [hosting] Rewriting /getTestCase?testCaseId=T_1528872126463 to local function app
+[info] [hosting] Rewriting /deleteTestCase?uid=U1234&botId=B_1527965345740&testCaseId=T_1528872126463 to local function app
 [info] [hosting] Rewriting /getBots?uid=U1234 to local function app
 [info] [hosting] Rewriting /getBots?uid=U1234 to local function app
 [info] [hosting] Rewriting /getTestCase?testCaseId=T_1527965303408 to local function app
@@ -167,46 +44,12 @@
 [info] [hosting] Rewriting /getTestCase?testCaseId=T_1527965303408 to local function app
 [info] [hosting] Rewriting /getBots?uid=U1234 to local function app
 [info] [hosting] Rewriting /getTestCase?testCaseId=T_1527965303408 to local function app
-[info] [hosting] Rewriting /getTestCase?testCaseId=T_1527965303408 to local function app
-[info] [hosting] Rewriting /getTestCase?testCaseId=T_1527965268566 to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /getTestCase?testCaseId=T_1527965303408 to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /getTestCase?testCaseId=T_1527965303408 to local function app
-[info] [hosting] Rewriting /getTestCase?testCaseId=T_1527965303408 to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /saveBot to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
+[info] [hosting] Rewriting /deleteTestCase?uid=U1234&botId=B_1527965137497&testCaseId=T_1527965303408 to local function app
 [info] [hosting] Rewriting /getBots?uid=U1234 to local function app
 [info] [hosting] Rewriting /saveTestCase to local function app
+[info] [hosting] Rewriting /getTestCase?testCaseId=T_1528880094402 to local function app
+[info] [hosting] Rewriting /getTestCase?testCaseId=T_1528880094402 to local function app
+[info] [hosting] Rewriting /deleteTestCase?uid=U1234&botId=B_1527965137497&testCaseId=T_1528880094402 to local function app
 [info] [hosting] Rewriting /getBots?uid=U1234 to local function app
 [info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /saveTestCase to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /saveTestCase to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /getTestCase?testCaseId=T_1527965303408 to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /getTestCase?testCaseId=T_1527965303408 to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /getTestCase?testCaseId=T_1527965303408 to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /getTestCase?testCaseId=T_1527965303408 to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
+[info] [hosting] Rewriting /deleteBot?uid=U1234&botId=B_1528799676410 to local function app

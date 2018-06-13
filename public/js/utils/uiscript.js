@@ -2,13 +2,11 @@
     addUserMessageToUI = function (message) {
         $('<li class="replies"><img src="./images/profile.jpg" alt="" /><p>' + message + '</p></li>').appendTo($('.messages ul'));
         $('.message-input input').val(null);
-        $('.contact.active .preview').html('<span>You: </span>' + message);
         $(".messages").animate({ scrollTop: $(document).height() }, "fast");
     };
     addBotMessageToUI = function (message) {
         $('<li class="sent"><img src="./images/bot.png" alt="" /><p>' + message + '</p></li>').appendTo($('.messages ul'));
         $('.message-input input').val(null);
-        $('.contact.active .preview').html('<span>' + $('#botNameId').val() + ':</span>' + message);
         $(".messages").animate({ scrollTop: $(document).height() }, "fast");
     };
 

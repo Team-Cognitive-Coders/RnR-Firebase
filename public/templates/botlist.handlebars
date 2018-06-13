@@ -1,18 +1,16 @@
 {{!-- Will go inside class=botList --}} 
 {{#each bots}}
     <li class="contact {{#if active}}active{{/if}}">
-        <a onclick="onSelectBot({{json botId}})" href="#homeSubmenu" 
-            data-toggle="collapse" aria-expanded="false">
+        <a onclick="onSelectBot({{json botId}})" >
             <div class="wrap">
                 <span class="contact-status online"></span>
-                <img src="./images/bot.png" alt="" />
+                <img src="./images/bot.png" alt=""/>
                 <div class="meta">
                     <p class="name">{{name}}</p>
-                    <p class="preview"></p>
                 </div>
             </div>
         </a>
-        <ul class="testList collapse list-unstyled" id="homeSubmenu">
+        <ul class="testList list-unstyled" id="homeSubmenu">
             {{#each testCases}}
                 <li>
                     <a onclick="onSelectTestCase({{json testCaseId}}, {{json ../botId}}, {{json url}})"

@@ -28,10 +28,17 @@
         }
     };
 
+    getDeleteTestCasePayload = function(){
+        return payload = {
+            testCaseId: "",
+            botId: "",
+            uid: "U1234"
+        }
+    }
+
     getTestCaseFormattedPayload = function () {
         return payload = {
             name: "",
-            testCaseId: "",
             url: "",
             testCaseId: "",
             active: false

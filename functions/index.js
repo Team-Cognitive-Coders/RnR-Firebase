@@ -81,7 +81,7 @@ app.get('/getBots', (req, res) => {
 });
 
 app.get('/sendMessage', (req, res) => {
-    var payload = req.query;
+    var payload = req.body;
     var messaging = pl.getMessagePayload();
     messaging.token = payload.token;
     messaging.query = payload.query;
@@ -103,7 +103,7 @@ app.delete('/deleteTestCase', (req, res) => {
     firebase_util.setBotRef(botId);
     firebase_util.deleteTestCase(testCaseId).then(() => {
         firebase_util.deleteTestCaseDetails(testCaseId).then(() => {
-            res.status(200).send();
+            res.status(200).send(payload);
         }, () => {
             res.status(500).send(error);
         });
@@ -118,7 +118,7 @@ app.delete('/deleteBot', (req, res) => {
     var botId = payload.botId;
     firebase_util.setUserRef(uid);
     firebase_util.deleteBot(botId).then(() => {
-        res.status(200).send();
+        res.status(200).send(payload);
     }, () => {
         res.status(500).send(error);
     });
