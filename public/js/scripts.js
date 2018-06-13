@@ -5,20 +5,18 @@
     fetchAllBots();
 
     function fetchAllBots() {
-        $.ajax({
-            url: "/getBots",
-            data: { uid: payloadModel.uid },
-            type: "GET",
-            dataType: "json",
-            success: function (response) {
-                formatAllBots(response);
-                addAllBots();
-                onSelectBot(undefined, 0)
-            },
-            error: function (response) {
+        var payload = {
+            uid: payloadModel.uid
+        };
+        var fSuccess = response => {
+            formatAllBots(response);
+            addAllBots();
+            onSelectBot(undefined, 0)
+        }
+        var fFail = () => {
 
-            }
-        });
+        }
+        getBotsRequest(payload, fSuccess, fFail);
     }
 
     addAllBots = function () {
@@ -73,28 +71,53 @@
     saveTestCase = function () {
         var payload = getSaveTestCasePayload();
         payload.chats = payloadModel.testCasePayload.chats;
-        payload.testCaseName = payloadModel.testCasePayload.testCaseName,
-            payload.botId = payloadModel.botId,
-            $.ajax({
-                url: "/saveTestCase",
-                data: payload,
-                type: "POST",
-                dataType: "json",
-                success: function (response) {
-                    var payload = getTestCaseFormattedPayload();
-                    payload.name = response.name;
-                    payload.url = response.url;
-                    payload.testCaseId = response.testCaseId;
-                    payload.active = true;
-                    addTestCaseToPayload(payload);
-                    addAllBots();
-                    onSelectTestCase(payload.testCaseId, payloadModel.botId, payload.url);
-                },
-                error: function (response) {
+        payload.testCaseName = payloadModel.testCasePayload.testCaseName;
+        payload.botId = payloadModel.botId;
+        fSuccess = response => {
+            var payload = getTestCaseFormattedPayload();
+            payload.name = response.name;
+            payload.url = response.url;
+            payload.testCaseId = response.testCaseId;
+            payload.active = true;
+            addTestCaseToPayload(payload);
+            addAllBots();
+            onSelectTestCase(payload.testCaseId, payloadModel.botId, payload.url);
+        }
+        fFail = () => {
 
-                }
-            });
+        };
+        saveTestCaseRequest(payload, fSuccess, fFail)
     }
+
+    $('#tokenSubmit').click(function () {
+        var payload = getSaveBotPayload();
+        payload.token = $('#bottoken').val();
+        payload.name = $('#botName').val();
+        payload.type = "API";
+        setAccessToken(payload.token);
+
+        var fSuccess = response => {
+            var payload = getAllBotsFormattedPayload();
+            payload.name = response.name;
+            payload.token = response.token;
+            payload.type = response.type;
+            payload.botId = response.botId;
+            addBotToPayload(payload);
+            addAllBots();
+        };
+        var fFail = () => {
+            alert("error")
+        };
+        saveBotRequest(payload, fSuccess, fFail);
+
+    });
+
+
+    $('#testCaseSubmit').click(function () {
+        var testCase = $('#nameOfTestCase').val();
+        setTestCaseName(testCase);
+        saveTestCase();
+    });
 
     //setAccessToken("377422fb9dcb4abf98242fb14afa8311");
     addTestCaseToPayload = function (payload) {
@@ -188,42 +211,30 @@
         payload.botId = payloadModel.botId;
         payload.uid = payloadModel.uid;
         payload.testCaseId = payloadModel.testCasePayload.testCaseId;
-        var url = `/deleteTestCase?uid=${payload.uid}&botId=${payload.botId}&testCaseId=${payload.testCaseId}`;
-        $.ajax({
-            url: url,
-            data: payload,
-            type: "DELETE",
-            dataType: "json",
-            success: function (response) {
-                onSelectBot(response.botId)
-                deleteTestCaseFromPayload(response.botId, response.testCaseId);
-                addAllBots();
-            },
-            error: function (response) {
+        var fSuccess = response => {
+            onSelectBot(response.botId)
+            deleteTestCaseFromPayload(response.botId, response.testCaseId);
+            addAllBots();
+        }
+        var fFail = () => {
 
-            }
-        });
+        }
+        deleteTestCaseRequest(payload, fSuccess, fFail)
     }
 
     onDeleteBotSelect = function () {
         var payload = getDeleteTestCasePayload();
         payload.botId = payloadModel.botId;
         payload.uid = payloadModel.uid;
-        var url = `/deleteBot?uid=${payload.uid}&botId=${payload.botId}`;
-        $.ajax({
-            url: url,
-            data: payload,
-            type: "DELETE",
-            dataType: "json",
-            success: function (response) {
-                onSelectBot(undefined, 0)
-                deleteBotFromPayload(response.botId);
-                addAllBots();
-            },
-            error: function (response) {
+        var fSuccess = response => {
+            onSelectBot(undefined, 0)
+            deleteBotFromPayload(response.botId);
+            addAllBots();
+        };
+        var fFail = () => {
 
-            }
-        });
+        };
+        deleteBotRequest(payload, fSuccess, fFail);
     }
 
     deleteTestCaseFromPayload = function (botId, testCaseId) {
@@ -251,21 +262,20 @@
         payloadModel.testCasePayload.testCaseId = "";
         payloadModel.testCasePayload.chats = {};
     }
-    fetchTestCase = function (testCaseId1) {
-        $.ajax({
-            url: "/getTestCase",
-            type: "GET",
-            data: { testCaseId: testCaseId1 },
-            dataType: "json",
-            success: function (response) {
-                if (response) {
-                    populateTestCases(response);
-                }
-            },
-            error: function (response) {
 
+    fetchTestCase = function (testCaseId1) {
+        var payload = {
+            testCaseId: testCaseId1
+        };
+        var fSuccess = response => {
+            if (response) {
+                populateTestCases(response);
             }
-        });
+        };
+        var fFail = () => {
+
+        };
+        getTestCaseRequest(payload, fSuccess, fFail);
     }
 
     populateTestCases = function (result) {
@@ -291,7 +301,9 @@
                 result = "";
             }
             if (payload[Object.keys(payload)[0]] != result) {
-                alert("Error: Expected - " + payload[Object.keys(payload)[0]]);
+                addBotMessageToUIActual(result);
+                addBotMessageToUIExpected(payload[Object.keys(payload)[0]]);
+                addFailMessageToUi();
             }
             else {
                 addBotMessageToUI(result);
@@ -299,7 +311,7 @@
                 if (payload[Object.keys(payload)[0]])
                     sendMessageTemp(payload, Object.keys(payload)[0]);
                 else
-                    alert("Success");
+                    addPassMessageToUi();
             }
         }).catch(function () {
 

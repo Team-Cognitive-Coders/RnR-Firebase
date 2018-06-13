@@ -1,118 +1,127 @@
-<!DOCTYPE html><html class=''>
+<!DOCTYPE html>
+<html class=''>
+
 <head>
-<!-- Bootstrap CSS CDN -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link rel="stylesheet" href="./css/bootstrap.min.css">
-<!-- Scrollbar Custom CSS -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
-<script src="./js/vendor/jquery.min.js"></script>
-<script src="./js/vendor/bootstrap.min.js"></script>
-<script src="./js/vendor/ApiAi.min.js"></script>
-<link href='./css/styles.css' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700,300' rel='stylesheet' type='text/css'>
-<link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css'>
-<link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.2/css/font-awesome.min.css'>
-<script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+	<!-- Bootstrap CSS CDN -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="./css/bootstrap.min.css">
+	<!-- Scrollbar Custom CSS -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+	<script src="./js/vendor/jquery.min.js"></script>
+	<script src="./js/vendor/bootstrap.min.js"></script>
+	<script src="./js/vendor/ApiAi.min.js"></script>
+	<link href='./css/styles.css' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700,300' rel='stylesheet' type='text/css'>
+	<link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css'>
+	<link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.2/css/font-awesome.min.css'>
+	<script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
 
 </head>
 
 <body>
-
-<div id="frame">
-	<div id="sidepanel">
-		<div id="profile">
-			<div class="wrap">
-				<img id="profile-img" src="./images/zypnos_profile1.png" class="online" alt="" />
-				<p>Zypnos Labs</p>
+	<div id="frame">
+		<div id="sidepanel">
+			<div id="profile">
+				<div class="wrap">
+					<img id="profile-img" src="./images/zypnos_profile1.png" class="online" alt="" />
+					<p>Zypnos Labs</p>
+				</div>
+			</div>
+			<div id="search">
+				<label for="">
+					<i class="fa fa-search" aria-hidden="true"></i>
+				</label>
+				<input type="text" placeholder="Search Bots..." />
+			</div>
+			<div id="contacts">
+				<ul class="botList" id="allBots">
+					<!-- Hanldebar template will go in here -->
+				</ul>
+			</div>
+			<div id="bottom-bar">
+				<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+					<i class="fa fa-user-plus fa-fw" aria-hidden="true"></i>
+					<span>Add Bot</span>
+				</button>
 			</div>
 		</div>
-		<div id="search">
-			<label for=""><i class="fa fa-search" aria-hidden="true"></i></label>
-			<input type="text" placeholder="Search Bots..." />
-		</div>
-		<div id="contacts">
-			<ul class="botList" id="allBots">
-				<!-- Hanldebar template will go in here -->
-			</ul>
-		</div>
-		<div id="bottom-bar">
-			<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal"><i class="fa fa-user-plus fa-fw" aria-hidden="true"></i> <span>Add Bot</span></button>
-		</div>
-	</div>
-	<div class="content">
-		<div class="contact-profile" id="headerButtons">
-			
-		</div>
-		<div class="messages">
-			<ul class="chats">
+		<div class="content">
+			<div class="contact-profile" id="headerButtons">
 
-			</ul>
-		</div>
-		<div class="message-input" id="input">
-			
+			</div>
+			<div class="messages">
+				<ul class="chats">
+
+				</ul>
+			</div>
+			<div class="message-input" id="input">
+
+			</div>
 		</div>
 	</div>
-</div>
-<!-- Modal for getting token -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="vertical-alignment-helper">
-        <div class="modal-dialog vertical-align-center">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+	<!-- Modal for getting token -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="vertical-alignment-helper">
+			<div class="modal-dialog vertical-align-center">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">
+							<span aria-hidden="true">&times;</span>
+							<span class="sr-only">Close</span>
+						</button>
+						<h4 class="modal-title" id="myModalLabel">Enter Bot token</h4>
 
-                    </button>
-                     <h4 class="modal-title" id="myModalLabel">Enter Bot token</h4>
-
-                </div>
-                <div class="modal-body">
-					<h5>Bot token</h5>
-					<input id="bottoken" type="text"></input>
-					<h5>Bot Name</h5>
-					<input id="botName" type="text"></input>
+					</div>
+					<div class="modal-body">
+						<h5>Bot token</h5>
+						<input id="bottoken" type="text"></input>
+						<h5>Bot Name</h5>
+						<input id="botName" type="text"></input>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						<button type="button" class="btn btn-primary" id="tokenSubmit" data-dismiss="modal">Save</button>
+					</div>
 				</div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" id="tokenSubmit" data-dismiss="modal">Save</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+			</div>
+		</div>
+	</div>
 
-<!-- Modal for saving Testcase-->
-<div class="modal fade" id="saveTcModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="vertical-alignment-helper">
-        <div class="modal-dialog vertical-align-center">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+	<!-- Modal for saving Testcase-->
+	<div class="modal fade" id="saveTcModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="vertical-alignment-helper">
+			<div class="modal-dialog vertical-align-center">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">
+							<span aria-hidden="true">&times;</span>
+							<span class="sr-only">Close</span>
 
-                    </button>
-                     <h4 class="modal-title" id="myModalLabel">Enter name of test case to be saved</h4>
+						</button>
+						<h4 class="modal-title" id="myModalLabel">Enter name of test case to be saved</h4>
 
-                </div>
-                <div class="modal-body">
-					<h5>Test case Name</h5>
-					<input id="nameOfTestCase" type="text"></input>
+					</div>
+					<div class="modal-body">
+						<h5>Test case Name</h5>
+						<input id="nameOfTestCase" type="text"></input>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						<button type="button" class="btn btn-primary" id="testCaseSubmit" data-dismiss="modal">Save</button>
+					</div>
 				</div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" id="testCaseSubmit" data-dismiss="modal">Save</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+			</div>
+		</div>
+	</div>
 
-<script type="text/javascript" src="./templates/handlebars.runtime.js"></script>
-<script type="text/javascript" src="./templates/handlebar-templates.js"></script>
-<script type="text/javascript" src="./js/tokenscript.js"></script>
-<script type="text/javascript" src="./js/utils/datarequest.js"></script>
-<script type="text/javascript" src="./js/utils/payload.js"></script>
-<script type="text/javascript" src="./js/utils/uiscript.js"></script>
-<script type="text/javascript" src="./js/utils/helpers.js"></script>
-<script type="text/javascript" src="./js/scripts.js"></script>
+	<script type="text/javascript" src="./templates/handlebars.runtime.js"></script>
+	<script type="text/javascript" src="./templates/handlebar-templates.js"></script>
+	<script type="text/javascript" src="./js/utils/datarequest.js"></script>
+	<script type="text/javascript" src="./js/utils/payload.js"></script>
+	<script type="text/javascript" src="./js/utils/uiscript.js"></script>
+	<script type="text/javascript" src="./js/utils/helpers.js"></script>
+	<script type="text/javascript" src="./js/scripts.js"></script>
 
 </body>
+
 </html>

@@ -9,6 +9,28 @@
         $('.message-input input').val(null);
         $(".messages").animate({ scrollTop: $(document).height() }, "fast");
     };
+    addBotMessageToUIActual = function (message) {
+        $('<li class="sent"><img src="./images/bot.png" alt="" /><p>' + message + '</p>'+
+            '&nbsp;<p class="actual">Actual</p></li>').appendTo($('.messages ul'));
+        $('.message-input input').val(null);
+        $(".messages").animate({ scrollTop: $(document).height() }, "fast");
+    };
+    addBotMessageToUIExpected = function (message) {
+        $('<li class="sent"><img src="./images/bot.png" alt="" /><p>' + message + '</p>'+
+            '&nbsp;<p class="expect">Expected</p></li>').appendTo($('.messages ul'));
+        $('.message-input input').val(null);
+        $(".messages").animate({ scrollTop: $(document).height() }, "fast");
+    };
+    addFailMessageToUi = function(){
+        $('<li class="fail"><p>Result : Failed</p></li>').appendTo($('.messages ul'));
+        $('.message-input input').val(null);
+        $(".messages").animate({ scrollTop: $(document).height() }, "fast");
+    }
+    addPassMessageToUi = function(){
+        $('<li class="pass"><p>Result : Passed</p></li>').appendTo($('.messages ul'));
+        $('.message-input input').val(null);
+        $(".messages").animate({ scrollTop: $(document).height() }, "fast");
+    }
 
     $(window).on('keydown', function (e) {
         if (e.which == 13) {

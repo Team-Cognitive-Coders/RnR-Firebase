@@ -1,55 +1,66 @@
-[debug] [2018-06-13T07:50:25.097Z] ----------------------------------------------------------------------
-[debug] [2018-06-13T07:50:25.101Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\I331896\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase serve --only functions,hosting
-[debug] [2018-06-13T07:50:25.101Z] CLI Version:   3.15.2
-[debug] [2018-06-13T07:50:25.101Z] Platform:      win32
-[debug] [2018-06-13T07:50:25.101Z] Node Version:  v8.6.0
-[debug] [2018-06-13T07:50:25.105Z] Time:          Wed Jun 13 2018 13:20:25 GMT+0530 (India Standard Time)
-[debug] [2018-06-13T07:50:25.105Z] ----------------------------------------------------------------------
+[debug] [2018-06-13T19:00:03.129Z] ----------------------------------------------------------------------
+[debug] [2018-06-13T19:00:03.133Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\I331896\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase deploy
+[debug] [2018-06-13T19:00:03.133Z] CLI Version:   3.15.2
+[debug] [2018-06-13T19:00:03.133Z] Platform:      win32
+[debug] [2018-06-13T19:00:03.133Z] Node Version:  v8.6.0
+[debug] [2018-06-13T19:00:03.137Z] Time:          Thu Jun 14 2018 00:30:03 GMT+0530 (India Standard Time)
+[debug] [2018-06-13T19:00:03.137Z] ----------------------------------------------------------------------
 [debug] 
-[debug] [2018-06-13T07:50:25.121Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2018-06-13T07:50:25.121Z] > authorizing via signed-in user
-[debug] [2018-06-13T07:50:25.125Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/recordandrun-abea2  
- Wed Jun 13 2018 13:20:25 GMT+0530 (India Standard Time)
-[debug] [2018-06-13T07:50:26.515Z] <<< HTTP RESPONSE 200
-[debug] [2018-06-13T07:50:26.515Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/recordandrun-abea2/tokens  
- Wed Jun 13 2018 13:20:26 GMT+0530 (India Standard Time)
-[debug] [2018-06-13T07:50:27.515Z] <<< HTTP RESPONSE 200
+[debug] [2018-06-13T19:00:03.165Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-06-13T19:00:03.169Z] > authorizing via signed-in user
+[debug] [2018-06-13T19:00:03.173Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2018-06-13T19:00:03.173Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token { refresh_token: '1/xG7HOdIzFva3mXwkg1kVGF8w9Vlm9_X1XX4AA6mOOmd_5-JM92EhXmOqGdxEI7J9',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
+ Thu Jun 14 2018 00:30:03 GMT+0530 (India Standard Time)
+[debug] [2018-06-13T19:00:03.621Z] <<< HTTP RESPONSE 200
+[debug] [2018-06-13T19:00:03.637Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/recordandrun-abea2  
+ Thu Jun 14 2018 00:30:03 GMT+0530 (India Standard Time)
+[debug] [2018-06-13T19:00:05.329Z] <<< HTTP RESPONSE 200
+[debug] [2018-06-13T19:00:05.333Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/recordandrun-abea2/tokens  
+ Thu Jun 14 2018 00:30:05 GMT+0530 (India Standard Time)
+[debug] [2018-06-13T19:00:06.609Z] <<< HTTP RESPONSE 200
 [info] 
-[info] === Serving from 'C:\Firebase\recordRun\recordRunLocalFirebase'...
+[info] === Deploying to 'recordandrun-abea2'...
 [info] 
-[info] i  functions: Preparing to emulate functions.
-[debug] [2018-06-13T07:50:28.223Z] >>> HTTP REQUEST GET https://appengine.googleapis.com/v1/apps/recordandrun-abea2  
- Wed Jun 13 2018 13:20:28 GMT+0530 (India Standard Time)
-[debug] [2018-06-13T07:50:28.227Z] >>> HTTP REQUEST GET https://apikeys.googleapis.com/v1/projects/recordandrun-abea2/apiKeys  
- Wed Jun 13 2018 13:20:28 GMT+0530 (India Standard Time)
-[debug] [2018-06-13T07:50:28.227Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/recordandrun-abea2  
- Wed Jun 13 2018 13:20:28 GMT+0530 (India Standard Time)
-[debug] [2018-06-13T07:50:29.914Z] <<< HTTP RESPONSE 200
-[debug] [2018-06-13T07:50:29.914Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/684922040528/clients/_:getWebAppConfig  
- Wed Jun 13 2018 13:20:29 GMT+0530 (India Standard Time)
-[debug] [2018-06-13T07:50:29.966Z] <<< HTTP RESPONSE 200
-[debug] [2018-06-13T07:50:30.002Z] <<< HTTP RESPONSE 200
-[debug] [2018-06-13T07:50:30.662Z] <<< HTTP RESPONSE 200
-[info] i  hosting: Serving hosting files from: public
-[info] +  hosting: Local server: http://localhost:5000
-
-[info] +  functions: app: http://localhost:5001/recordandrun-abea2/us-central1/app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /getTestCase?testCaseId=T_1528872126463 to local function app
-[info] [hosting] Rewriting /deleteTestCase?uid=U1234&botId=B_1527965345740&testCaseId=T_1528872126463 to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /getTestCase?testCaseId=T_1527965303408 to local function app
-[info] [hosting] Rewriting /getTestCase?testCaseId=T_1527965303408 to local function app
-[info] [hosting] Rewriting /getTestCase?testCaseId=T_1527965303408 to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /getTestCase?testCaseId=T_1527965303408 to local function app
-[info] [hosting] Rewriting /deleteTestCase?uid=U1234&botId=B_1527965137497&testCaseId=T_1527965303408 to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /saveTestCase to local function app
-[info] [hosting] Rewriting /getTestCase?testCaseId=T_1528880094402 to local function app
-[info] [hosting] Rewriting /getTestCase?testCaseId=T_1528880094402 to local function app
-[info] [hosting] Rewriting /deleteTestCase?uid=U1234&botId=B_1527965137497&testCaseId=T_1528880094402 to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /getBots?uid=U1234 to local function app
-[info] [hosting] Rewriting /deleteBot?uid=U1234&botId=B_1528799676410 to local function app
+[info] i  deploying functions, hosting
+[debug] [2018-06-13T19:00:08.545Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "serve": "firebase serve --only functions",
+    "shell": "firebase experimental:functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "dependencies": {
+    "apiai": "^4.0.3",
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.4",
+    "dialogflow": "^0.5.0",
+    "express": "^4.16.3",
+    "firebase-admin": "~5.4.2",
+    "firebase-functions": "^0.7.1",
+    "handlebars": "^4.0.11",
+    "request": "^2.87.0"
+  },
+  "private": true
+}
+[info] i  functions: ensuring necessary APIs are enabled...
+[info] i  runtimeconfig: ensuring necessary APIs are enabled...
+[debug] [2018-06-13T19:00:08.581Z] >>> HTTP REQUEST GET https://servicemanagement.googleapis.com/v1/services/cloudfunctions.googleapis.com/projectSettings/recordandrun-abea2?view=CONSUMER_VIEW  
+ Thu Jun 14 2018 00:30:08 GMT+0530 (India Standard Time)
+[debug] [2018-06-13T19:00:08.581Z] >>> HTTP REQUEST GET https://servicemanagement.googleapis.com/v1/services/runtimeconfig.googleapis.com/projectSettings/recordandrun-abea2?view=CONSUMER_VIEW  
+ Thu Jun 14 2018 00:30:08 GMT+0530 (India Standard Time)
+[debug] [2018-06-13T19:00:11.137Z] <<< HTTP RESPONSE 200
+[info] +  runtimeconfig: all necessary APIs are enabled
+[debug] [2018-06-13T19:00:11.869Z] <<< HTTP RESPONSE 200
+[info] +  functions: all necessary APIs are enabled
+[debug] [2018-06-13T19:00:11.885Z] >>> HTTP REQUEST GET https://appengine.googleapis.com/v1/apps/recordandrun-abea2  
+ Thu Jun 14 2018 00:30:11 GMT+0530 (India Standard Time)
+[debug] [2018-06-13T19:00:11.885Z] >>> HTTP REQUEST GET https://apikeys.googleapis.com/v1/projects/recordandrun-abea2/apiKeys  
+ Thu Jun 14 2018 00:30:11 GMT+0530 (India Standard Time)
+[debug] [2018-06-13T19:00:13.975Z] <<< HTTP RESPONSE 200
